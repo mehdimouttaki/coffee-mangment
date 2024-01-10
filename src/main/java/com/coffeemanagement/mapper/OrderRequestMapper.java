@@ -11,10 +11,10 @@ import org.mapstruct.Mapping;
 public interface OrderRequestMapper extends GenericMapper<Order, OrderRequest> {
 
     @Override
-    @Mapping(source = "table.number",target = "tableNumber")
+    @Mapping(source = "table",target = "tableNumber")
     OrderRequest sourceToTarget(Order source) throws Exception, IllegalAccessException;
 
     @Override
-    @Mapping(target = "table.number",source = "tableNumber")
+    @Mapping(target = "table",source = "tableNumber")
     Order targetToSource(OrderRequest target);
 }

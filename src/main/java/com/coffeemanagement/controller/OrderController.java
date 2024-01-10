@@ -3,7 +3,7 @@ package com.coffeemanagement.controller;
 import com.coffeemanagement.dto.request.OrderRequest;
 import com.coffeemanagement.dto.response.OrderResponse;
 import com.coffeemanagement.service.OrderService;
-import jakarta.annotation.PostConstruct;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,8 +21,9 @@ public class OrderController {
     }
 
     @PostMapping("/create")
-    public OrderResponse createOrder(@RequestBody OrderRequest orderRequest) throws Exception {
-        return orderService.creatOrder(orderRequest);
+    public ResponseEntity<OrderResponse> createOrder(@RequestBody OrderRequest orderRequest) throws Exception {
+        return new ResponseEntity<>(orderService.creatOrder(orderRequest), HttpStatus.CREATED);
+
 
     }
 }

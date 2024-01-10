@@ -4,6 +4,8 @@ import com.coffeemanagement.dto.request
         .MenuRequest;
 import com.coffeemanagement.dto.response.MenuResponse;
 import com.coffeemanagement.service.MenuService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +22,8 @@ public class MenuController {
     }
 
     @PostMapping
-    public MenuResponse createMenu(@RequestBody MenuRequest menuRequest) throws Exception {
-        return menuService.createMenu(menuRequest);
+    public ResponseEntity<MenuResponse> createMenu(@RequestBody MenuRequest menuRequest) throws Exception {
+        return new ResponseEntity<>(menuService.createMenu(menuRequest), HttpStatus.CREATED);
+
     }
 }

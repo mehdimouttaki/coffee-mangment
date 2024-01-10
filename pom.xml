@@ -96,6 +96,12 @@
         </dependency>
 
 
+        <!-- https://mvnrepository.com/artifact/org.hibernate.hql/hibernate-hql-parser -->
+        <dependency>
+            <groupId>org.hibernate.hql</groupId>
+            <artifactId>hibernate-hql-parser</artifactId>
+            <version>1.1.0.Final</version>
+        </dependency>
 
 
 

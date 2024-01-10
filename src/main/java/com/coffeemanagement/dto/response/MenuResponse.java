@@ -17,5 +17,6 @@ public class MenuResponse {
 
 
     private Long categoryId;
+
     private String category;
 }

@@ -2,6 +2,7 @@ package com.coffeemanagement.service.serviceImpl;
 
 import com.coffeemanagement.dto.request.MenuRequest;
 import com.coffeemanagement.dto.response.MenuResponse;
+import com.coffeemanagement.exception.EntityNotFoundException;
 import com.coffeemanagement.mapper.MenuRequestMapper;
 import com.coffeemanagement.mapper.MenuResponseMapper;
 import com.coffeemanagement.model.Category;
@@ -11,6 +12,8 @@ import com.coffeemanagement.repository.MenuRepository;
 import com.coffeemanagement.service.MenuService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class MenuServiceImpl implements MenuService {
@@ -31,6 +34,10 @@ public class MenuServiceImpl implements MenuService {
 
         Menu menu = menuRequestMapper.targetToSource(menuRequest);
          categoryRepository.findById(menuRequest.getCategory()).orElseThrow();
+          Optional<Menu> menuWithName =  menuRepository.findByMenuIgnoreCase(menuRequest.getMenu());
+        if (menuWithName.isPresent()) {
+            throw new Exception("Menu is duplicated ");
+        }
         return menuResponseMapper.sourceToTarget(menuRepository.save(menu));
 
     }
