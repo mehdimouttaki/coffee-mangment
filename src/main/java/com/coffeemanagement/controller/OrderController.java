@@ -24,6 +24,5 @@ public class OrderController {
     public ResponseEntity<OrderResponse> createOrder(@RequestBody OrderRequest orderRequest) throws Exception {
         return new ResponseEntity<>(orderService.creatOrder(orderRequest), HttpStatus.CREATED);
 
-
     }
 }

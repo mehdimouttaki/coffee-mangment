@@ -45,7 +45,7 @@ public class SecurityConfiguration {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
-                        req.requestMatchers("api/order/**","/api/v1/auth/**").permitAll()
+                        req.requestMatchers("api/order/**","/api/auth/**").permitAll()
 
 
                                 .requestMatchers("/api/menu/**").hasAnyRole(Role.ADMIN.name())

@@ -30,6 +30,7 @@ public class UserController {
             user.setFirstname("Mehdi");
             user.setLastname("Mouttaki");
             user.setEmail("admin@gmail.com");
+            user.setUsername("mehdi.mouttaki");
             user.setPassword(passwordEncoder.encode("123456"));
             user.setRole(Role.ADMIN);
             userService.save(user);
